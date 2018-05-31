@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Data</title>
+	<script src="js/jquery.min.js"></script>
+ 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+ 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+ 	<style type="text/css">
+ 		.rating { display: block; }
+ 		.fa-star {color:#ffa500; margin-left:5px}
+ 	</style>
+
+</head>
+<body>
+	<!-- https://stackoverflow.com/questions/24909006/javascript-get-data-from-json-to-a-global-variable
+https://cloudinary.com/blog/10_great_jquery_sliders_and_5_ways_to_build_one_yourself
+	https://codeburst.io/learn-understand-javascripts-map-function-ffc059264783 -->
+<div id="cwrap">
+	<ul id="carousel">
+	<li class="citem">
+		<figure>
+			<img src="img/image-slider-1.jpg">
+			<figcaption>
+				Slider 1
+			</figcaption>
+		</figure>
+	</li>
+	<li class="citem">
+		<figure>
+			<img src="img/image-slider-2.jpg">
+			<figcaption>
+				Slider 2
+			</figcaption>
+		</figure>
+	</li>
+	<li class="citem">
+		<figure>
+			<img src="img/image-slider-3.jpg">
+			<figcaption>
+				Slider 3
+			</figcaption>
+		</figure>
+	</li>
+	</ul>
+</div>
+
+
+<div id="wrap">
+	
+</div>
+
+<script type="text/javascript">
+
+//carousel
+
+$(document).ready(function(){
+
+	$("figcaption").fadeIn(2000);
+
+	setInterval(function(){
+
+
+		$("#carousel").animate({marginLeft:-960}, 1000, function(){
+
+			$(this).find("li:last").after($(this).find("li:first"));
+			$(this).css({marginLeft:0});
+			$(this).children("li").find("figcaption").fadeIn(1000);
+			
+		})
+
+		$("figcaption").fadeOut();
+
+	},7000)
+})
+
+
+let wrap = document.getElementById("wrap");
+
+function getData(callback){
+	$.getJSON('data-a.json', function (data) {
+		callback(data);
+	});
+}
+
+function star(num,elm) {
+		let y = 0;
+		while (y < num ) {
+			let a = document.createElement("i");
+			a.classList.add("fa");
+			a.classList.add("fa-star");
+
+			elm.appendChild(a);
+
+			y++
+		}	
+
+}
+
+getData(function(data){
+	console.log("callback success")
+
+	var a = data.movies;
+	var b = data.movies[0];
+
+	let titleArr = a.map((a)=>{
+		return a.title;
+	});
+
+	
+	//console.log(b)
+
+	for(i=0; i<a.length; i++){
+
+		let liItem = document.createElement("div"),
+		eltitle = document.createElement("h1"),
+		elgenre = document.createElement("h2"),
+		ptext = document.createElement("p"),
+		elchar = document.createElement("span"),
+		elrating = document.createElement("span"),
+		img = document.createElement("img");
+
+		elrating.classList.add("rating");
+		liItem.classList.add("li");
+		eltitle.classList.add("title");
+		elgenre.classList.add("genre");
+		elchar.classList.add("characters");
+		img.classList.add("thumb");
+
+		let b = a[i].rating;
+
+		if(b){
+			star(b,elrating);
+		}
+		
+		eltitle.innerText = a[i].title;
+		elgenre.innerText = a[i].genre;
+		elchar.innerText = a[i].chars;
+		img.setAttribute("src", a[i].thumb);
+
+		wrap.appendChild(liItem);
+		liItem.appendChild(eltitle);
+		liItem.appendChild(elgenre);
+		liItem.appendChild(ptext);
+		ptext.appendChild(elrating);
+		ptext.appendChild(elchar);
+		liItem.appendChild(img);
+	}
+
+	//for sortin
+
+})
+
+
+
+
+</script>
+</body>
+</html>
