@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$primarycolor: #5b0b0b;
+$secondarycolor: #3c3c3c;
+
+$bgColor: #f3f3f3;
+$fgColor:#fff;
+$rgb: rgb( 0, 0, 0);
+
+$smSpace:20px;
+$mdSpace:40px;
+$lgSpace:70px;
+
+@mixin padLR ($padding){
+	padding-left:$padding;
+	padding-right:$padding;
+}
+
+@mixin margLR($margin){
+	margin-left:$margin;
+	margin-right:$margin;
+}
+
+@mixin bigLetter(){
+	font-size: 150px;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+@mixin smLetter(){
+	display: inline-block;	
+    margin-top: 50px;
+    text-align: left;
+    vertical-align: top;
+} 
+
+
+body { margin: 0 auto;font-family: 'Roboto', sans-serif;}
+
+main {
+	padding: 0 0 30px 0;
+	background: $bgColor;
+}
+
+nav {
+	width: 100%;
+	background-color:$primarycolor;
+	height: 55px;
+	display: flex;
+
+	 div { 
+	flex-flow: row wrap; 
+	box-sizing: 
+	border-box; 
+	padding: 0 10px;
+	align-items:center;
+	display: flex;
+
+		 a { 
+		 color: #fff;
+		 text-decoration:none; 
+		 flex-flow: row wrap;
+
+		 
+		}
+	}
+
+}
+
+#logo {	width: 10%;}
+
+#main-nav {
+	width:70%;
+	justify-content: flex-end;
+
+	a {padding: 0 20px;}
+}
+
+#sec-menu {
+	width: 20%;
+	justify-content: flex-end;
+
+	a {padding: 0 10px;}
+}
+
+
+#slider {
+	margin: 0;
+	overflow: hidden;
+	height: 650px;
+}
+
+#crsl {
+	height: 650px;
+	margin: 0;
+	padding: 0;
+
+	li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		float:left;
+	}
+
+}
+
+figure {
+	position: relative;
+	margin: 0;
+
+	img { 
+		width: 100%;
+		display:block;
+		margin:0 auto;
+	}
+}
+
+
+figcaption {
+	width: 40%;
+	color: #fff;
+	padding: 10px 10px 0 10px;
+	margin: 100px 0 0 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+	background-color: rgba( $rgb, 0.6);
+	box-sizing: border-box;
+	
+	h1, p, span, h2, h3, h4 {color:$fgColor;}
+
+}
+
+#content { 
+	background: $fgColor; 
+	padding: 15px 30px;
+}
+
+#movielist {
+	width: 100%;
+	display: flex;
+	box-sizing: border-box;
+	justify-content:center;
+	margin-top:15px;
+	
+	div {
+		flex-flow: row wrap;
+		@include padLR(15px);
+		@include margLR(10px);
+		background:$bgColor;
+	}
+}
+
+
+h1 { text-align: center; color: $primarycolor}
+
+#tip { background: #f3f3f3 }
+
+article {
+	width: 960px;
+	margin: 10px auto;
+	padding: 10px 15px;
+	overflow: hidden;
+	background: #fff;
+
+	 img { 
+		width: 250px; 
+		float: left;
+		margin-right: 10px; 
+	}
+}
+
+footer {
+	height: 60px;
+	width: 100%;
+	background: #000;
+	color: #fff;
+	line-height: 60px;
+	padding: 0 20px;
+	box-sizing: border-box;
+
+}
+
+.rating { display: block; }
+.fa-star {color:#ffa500; margin-left:5px}
+
+
+.big {@include bigLetter();}
+
+.small { @include smLetter();}
