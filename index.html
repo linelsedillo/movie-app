@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
 		Web Test
 	</title>
@@ -12,9 +12,9 @@
 </head>
 <body>
 <nav>
-	<div id="logo"><a href="#">Logo Name</a></div>
+	<div id="logo"><a href="#">MashPotato</a></div>
 	<div id="main-nav">
-		<a href="#">Home</a>
+		<a href="#">Home</a>			
 		<a href="#">About</a>
 		<a href="#">Contact</a>
 		<a href="#">Blog</a>
@@ -23,6 +23,24 @@
 		<a href="#"><i class="fas fa-key"></i></a>
 		<a href="#"><i class="fas fa-search"></i></a>
 		<a href="#"><i class="fas fa-user"></i></a>
+	</div>
+	<div id="nav-m">
+		<ul>
+			<li class="mobi-a">
+					<a href="#" ><i class="fas fa-bars fa-2x"></i>
+						<ul id="mobi-nav">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Contact</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#"><i class="fas fa-key"></i></a></li>
+							<li><a href="#"><i class="fas fa-search"></i></a></li>
+							<li><a href="#"><i class="fas fa-user"></i></a></li>
+						</ul>
+					</a>
+			</li>
+		</ul>
+		
 	</div>
 </nav>
 <main>
@@ -60,8 +78,8 @@
 		</ul>
 	</div>
 	<section id="content">
-		<h1>Movie List</h1>
-	
+		<h1><span class="big">6</span><span class="small">Movie List<br>Worth to Watch</span></h1>
+		
 		<label>Choose rating</label>
 		<select class="custom-select" id="inputlist">
 		    <option selected value="all">All movies</option>
